@@ -4,9 +4,11 @@ import MyComponent from "./componets/MyComponent.tsx";
 function App() {
   return (
     <>
-        {/*text={'hello 1'} це аргумент і назва його промс*/}
-        <MyComponent text={'hello 1'} />
-        {/*{MyComponent({text:'hello'})}*/}
+        <MyComponent title={'hello 1'} >
+
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, odit.
+        </MyComponent>
+        <MyComponent title={'hello 2'} > </MyComponent>
     </>
   )
 }

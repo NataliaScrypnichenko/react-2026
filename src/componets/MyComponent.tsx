@@ -1,30 +1,19 @@
-// function MyComponent() {
-//     return (
-//         <div>
-//             Hello Okten!
-//         </div>
-//     )
-// }
-
-import type {FC} from "react";
-// import './MyComponent.css'
+import type {FC,ReactNode} from "react";
 import styles from "./MyComponent.module.css"
 
-type MyComponentPropType= {text:string}
+type MyComponentPropType= {
+    title:string,
+    // children:string
+    children?:ReactNode,
 
-// function MyComponent({text}:MyComponentPropType) {
-//     return (
-//         <div>
-//             {text}
-//         </div>
-//     )
-// }
-
-const  MyComponent:FC<MyComponentPropType> =({text})=> {
+}
+// children знаходяться між <MyComponent></MyComponent>, і в середині може виступати не стрінг а інше щось
+// children:ReactNode, можна давати не кожному  children?:ReactNode
+const  MyComponent:FC<MyComponentPropType> =({title,children})=> {
     return (
-        // <div className={'target'}>
         <div  className={styles.target}>
-            {text}
+            <h2>{title}</h2>
+            <p>{children}</p>
         </div>
     )
 }
