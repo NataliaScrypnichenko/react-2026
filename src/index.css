@@ -1,1 +1,12 @@
 @import "tailwindcss";
+.product img{
+    width: 100px;
+    height: 110px;
+}
+.product {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: black solid 8px;
+
+}
