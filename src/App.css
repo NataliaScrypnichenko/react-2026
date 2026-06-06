@@ -1,0 +1,14 @@
+ul{
+    width:50%;
+    height:300px;
+    margin-top: 100px;
+    margin-left: 300px;
+    border: black solid 8px;
+    background: darkkhaki;
+
+}
+li{
+    width:50%;
+    height:40px;
+    margin:5px auto;
+}
