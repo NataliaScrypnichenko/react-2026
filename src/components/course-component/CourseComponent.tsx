@@ -1,7 +1,7 @@
 import type {FC} from "react";
 import type {ICourses} from "../../models/course/ICourses.tsx";
 import ModuleComponent from "../module-component/ModuleComponent.tsx";
-
+import './CourseComponent.css'
 
 type CoursesComponentPropsType = {
     course: ICourses;

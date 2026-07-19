@@ -1,0 +1,30 @@
+body{
+    display: flex;
+    /*flex-direction: column;*/
+    align-items: center;
+    justify-content: center;
+   background: darkkhaki;
+}
+
+.coursesClass{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 700px;
+    height: 500%;
+    border: 5px solid rgba(112, 128, 144, 0.42);
+    background: blanchedalmond;
+    margin-top: 7px;
+}
+.coursesClass h2{
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-right: 100px;
+}
+.coursesClass p{
+    font-size: 20px;
+    color: indigo;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
