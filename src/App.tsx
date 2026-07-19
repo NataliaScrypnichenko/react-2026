@@ -1,19 +1,12 @@
 import './App.css'
-import {simpsons} from "./data/simpsons.ts";
-import CharacterComponent from "./components/CharacterComponent/CharacterComponent.tsx";
-
-
-
-
+import FamilyComponent from "./components/family-Component/FamilyComponent.tsx";
 
 function App() {
 
 
   return (
     <>
-      {
-        simpsons.map((simpson,index)=><CharacterComponent key={index} simpson={simpson}/>)
-      }
+     <FamilyComponent/>
     </>
   )
 }
