@@ -1,73 +1,24 @@
-# React + TypeScript + Vite
+useState hook-
+Хуки це спеціалізовані функції  
+onClick- події пишуть через велику букву
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Найпоширеніші події
+Подія=Для чого
+onClick = Найчастіше використовується. kлік
+onChange = Працює при зміні значення input.
+onSubmit = для форми
+onKeyDown	Коли натискається клавіша
+onFocus	курсор зайшов
+onBlur	курсор вийшов
+onMouseEnter	навели мишку
+onMouseLeave	прибрали мишку
 
-Currently, two official plugins are available:
+Hooks — це спеціальні функції React.
+useState = Використовується для зберігання даних.зберігати та змінювати стан компонента
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Компоненти мають свій цикл життєвий зверху до низу з права наліво.Але після того як створюється компонент то він же функція яка створюється і виконується самим реактом. Для того щоб бачити зміни при натисканні кнопки 
 
-## React Compiler
+Для того щоб змінівався каунтер і підтягувало значення на сторінку то використовуємо ф-ю useState()-вона зберігається в реакті в якості аргумента вона може приймати значення (0) а повертати буде масив а в ньому буде два об'єкта ,перший -це гетер через якого можемо отримати інформацію,а другий це сетер через якого будемо отриману інформацію змінювати.Тобто Змінна каунтер це наш початковий нуль,(з неї тільки можна діставати інформацію) setCounter- це маніпулятор counter. Замість цього будемо викликати setCounter в нього передаємо каунтер
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+якщо є щось змінювати при натискані кнопки або призавантаженні то розуміємо що це буде діставатися з плином часом то потрібно використовувати - useState()- це хук який дозволяє зберігати фіксувати і змінювати стан нашого компонента ,їх може бути багато але повині по різному називатися.За звичай перший елемент маиву який повертає називається по своємупринципу що він там робить ,а другий елемент масиву називають таксмо як і перший але з префіксом (set) p dtkbrj] з великої літери.
+useState- типизується 
