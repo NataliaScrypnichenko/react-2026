@@ -1,12 +1,28 @@
-import './App.css'
+import {useEffect, useState} from "react";
 
-function App() {
+const App = () => {
 
+  const[users, setUsers]=useState<any[]>([]);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(value => value.json())
+        .then(user => {
+          setUsers(user);
+        });
+
+    return()=>{
+      console.log('hi');
+    }
+
+  },[]);
 
   return (
-    <>
-
-    </>
+      <>
+        {
+          users.map(user => <div key={user.id}>{user.name}</div>)
+        }
+      </>
   )
 }
 

@@ -1,73 +1,47 @@
-# React + TypeScript + Vite
+витягуємо данні з IPA і відобразити його
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ те що відбувається в асинхроній функції там так і залишається
 
-Currently, two official plugins are available:
+за допомоги useState можем витягнути дані і показати їх
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+ 
+ми викликаємо setUsers і передаємо users і пердаємо в середину  респонс .then(value => { setUsers(value); })
+де в ньому лежить масив із користувачами
+________________________________________________________________________________________________________________
+import {useEffect, useState} from "react";
 
-## React Compiler
+const App = () => {
+//1 формуємо
+const[users, setUsers]=useState<any[]>([]);
+// 2 формуємо fetch функцію, але він в середині автоматично рендить тобто перебирає дані багато разів,
+// щоб такого не було то використовуємо хук useEffect який має два аргументи це колбек функцію і масив залежності.
+// от оцей масив і не дає багато разів автоматично перебирати його- рендить буде виконуватися один раз.
+// Пустий масив це масив залежності тобто якщо існує якась зміна
+// яку в майбутньому буде змінюватися і поставили її в залежність якщо вона буде змінюватися,
+// то useEffect буде перевиконуватися
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+useEffect(() => {
+fetch('https://jsonplaceholder.typicode.com/users')
+.then(value => value.json())
+.then(user => {
+setUsers(user);
+});
+// може мати ретерн який має свою колбек функцію і вона виконується тоді коли юзефект зробив свою справу,
+// робиться якась відписка від сервіру
+return()=>{
+console.log('hi');
+}
 
-## Expanding the ESLint configuration
+},[]);
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+// 3 формуємо розмітку і ітеруємо масив
+return (
+<>
+{
+users.map(user => <div key={user.id}>{user.name}</div>)
+}
+</>
+)
+}
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+export default App
