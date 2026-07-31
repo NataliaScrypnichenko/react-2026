@@ -1,7 +1,9 @@
 import type {IUser} from "../moduls/IUser.ts";
 
+const baseUrl= import.meta.env.VITE_API_URL
+
  const getUsers = async ():Promise<IUser[]> => {
-     const users= await fetch('https://jsonplaceholder.typicode.com/users')
+     const users= await fetch(import.meta.env.VITE_API_URL)
         .then(value => value.json())
 
     return users;
@@ -15,7 +17,7 @@ export {getUsers}
      //     .then(value => value.json())
      // return user;
 
-     return  await fetch('https://jsonplaceholder.typicode.com/users'+id)
+     return  await fetch(baseUrl + '/'+ id)
          .then(value => value.json());
  }
 
