@@ -1,13 +1,14 @@
-import './App.css'
-
-function App() {
+import Comments from "./components/comments-component/Comments.tsx";
 
 
+const App = () => {
   return (
-    <>
+      <div>
+        {
+          <Comments/>
+        }
+      </div>
+  );
+};
 
-    </>
-  )
-}
-
-export default App
+export default App;

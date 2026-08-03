@@ -1,0 +1,16 @@
+body{
+    background: rgba(241, 177, 152, 0.87);
+}
+.div_comment{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    border: 5px solid #1fad1f;
+    width: 70%;
+    margin: 15px auto;
+    background: #cde3cd;
+}
+p{
+
+}
