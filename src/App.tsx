@@ -1,12 +1,14 @@
 import './App.css'
-import TodosComponent from "./components/todos-component/Todos/TodosComponent.tsx";
+import PostsCpmponent from "./components/posts-component/Posts/PostsCpmponent.tsx";
+// import TodosComponent from "./components/todos-component/Todos/TodosComponent.tsx";
 
 function App() {
 
 
   return (
     <>
-     <TodosComponent/>
+     {/*<TodosComponent/>*/}
+        <PostsCpmponent/>
     </>
   )
 }
