@@ -1,15 +1,19 @@
 import type {FC} from "react";
-import type {TodoModel} from "../../../models/todo-model/TodoModel.ts";
+import type {TodosModel} from "../../../models/todo-model/TodosModel.ts";
+import './TodoComponent.css'
 
 type TodosType ={
-    todo:TodoModel
+    todo:TodosModel
 }
 
 const TodoComponent:FC<TodosType> = ({todo}) => {
     return (
-        <div>
-            <h1>{todo.skip}{todo.limit}</h1>
-            <p>{todo.total}</p>
+        <div >
+            <div className="div_todo">
+                <h1>{todo.id}{'-'} {todo.userId}{'-'}{todo.completed.toString()}</h1>
+                <p>{todo.todo}</p>
+            </div>
+
         </div>
     );
 };

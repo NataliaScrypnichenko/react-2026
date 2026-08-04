@@ -1,12 +1,11 @@
-
-import type {TodoModel} from "../../../models/todo-model/TodoModel.ts";
 import {getTodos} from "../../../services/api.services.ts";
 import TodoComponent from "../Todo/TodoComponent.tsx";
 import {useEffect, useState} from "react";
+import type {TodosModel} from "../../../models/todo-model/TodosModel.ts";
 
 
 const TodosComponent = () => {
-   const [todos,setTodos]=useState<TodoModel[]>([]);
+   const [todos,setTodos]=useState<TodosModel[]>([]);
 
    useEffect(()=>{
             getTodos()

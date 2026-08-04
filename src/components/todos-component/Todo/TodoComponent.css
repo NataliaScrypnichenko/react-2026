@@ -1,0 +1,15 @@
+body{
+    background-color: rgba(100, 149, 237, 0.54);
+}
+.div_todo{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    background-color: rgba(192, 192, 192, 0.93);
+    border: 13px solid #8b8913;
+    border-radius: 40px;
+    margin: 10px auto;
+    width: 700px;
+    height: 100px;
+}
