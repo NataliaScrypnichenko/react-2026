@@ -1,0 +1,12 @@
+.div_comment {
+    width: 70%;
+    height: 40%;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    border: 9px solid #8b8913;
+    margin: 5px auto;
+    background: blanchedalmond;
+}

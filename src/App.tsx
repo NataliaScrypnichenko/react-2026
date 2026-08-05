@@ -1,5 +1,6 @@
 import './App.css'
-import PostsCpmponent from "./components/posts-component/Posts/PostsCpmponent.tsx";
+import CommentsComponent from "./components/comment-component/comments/CommentsComponent.tsx";
+// import PostsComponent from "./components/posts-component/Posts/PostsComponent.tsx";
 // import TodosComponent from "./components/todos-component/Todos/TodosComponent.tsx";
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
   return (
     <>
      {/*<TodosComponent/>*/}
-        <PostsCpmponent/>
+     {/*   <PostsComponent/>*/}
+      <CommentsComponent/>
     </>
   )
 }

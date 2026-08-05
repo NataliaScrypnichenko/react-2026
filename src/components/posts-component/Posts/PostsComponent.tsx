@@ -4,7 +4,7 @@ import {getPosts} from "../../../services/api.services.ts";
 import PostComponent from "../Post/PostComponent.tsx";
 
 
-const PostsCpmponent = () => {
+const PostsComponent = () => {
 
     const [posts, setPosts] = useState<PostsModel[]>([]);
 
@@ -21,4 +21,4 @@ const PostsCpmponent = () => {
     );
 };
 
-export default PostsCpmponent;
+export default PostsComponent;
