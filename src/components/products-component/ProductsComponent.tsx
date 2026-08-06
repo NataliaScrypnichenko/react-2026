@@ -11,7 +11,7 @@ const ProductsComponent = () => {
     useEffect(() => {
         getProduct()
             .then(value => setProducts(value));
-    },[])
+    },[]);
 
     return (
         <div>
