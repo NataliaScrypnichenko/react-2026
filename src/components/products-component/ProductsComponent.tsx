@@ -16,7 +16,7 @@ const ProductsComponent = () => {
     return (
         <div>
             {
-                products.map((product) => (<ProductComponent product={product} key={product.id} />))
+                products.map(product => <ProductComponent product={product} key={product.id} />)
             }
         </div>
     );
