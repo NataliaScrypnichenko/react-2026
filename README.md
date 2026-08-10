@@ -1,73 +1,20 @@
-# React + TypeScript + Vite
+тут навчаємося натискати на юзера і в низу бачити його інформацію детально, а інших юзерів немає бути там
+це потрібно прописати шляхи в файлі router.tsx=> {path:'users/details', element:<SingleUserDetailsPage/>},
+потім викликаємо сторінку із файла UserComponent через клікабельним <Link to={'details'}>{item.name}</Link>
+а щоб була видна інформація 
+то використовуємо пропсу state{} куди передаємо об'єкт який характерезує об'єкт з інформацією
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+щоб дістати його item то на сторінці SingleUserDetailsPage через хук   const {state} = useLocation();
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+щоб дістати інформацію через кнопку то використовуємо хук сторінці UserComponent:
+//хук який видає об1єкт
+const navigate = useNavigate();
+    const handelOnClick = ()=>{
+        //сюди передаємо шлях куди переходити і об'єкт опшен
+       navigate('details',{state:item})
+return (
+<div>
+<Link to={'details'} state={item}>{item.name}</Link>
+<button onClick={handelOnClick}> go to details</button>
+</div>
+);   };
