@@ -18,5 +18,9 @@ export const postService = {
     getPosts:async ():Promise<IPost[]> => {
         return await fetch("https://jsonplaceholder.typicode.com/posts")
             .then(res => res.json())
+    },
+    getAllPostsOfUserById:async (id:number):Promise<IPost[]> => {
+        return await fetch(urls.posts.userPostById(id))
+            .then(value => value.json())
     }
 }

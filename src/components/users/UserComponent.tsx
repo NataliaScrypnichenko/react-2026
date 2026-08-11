@@ -12,7 +12,7 @@ const UserComponent:FC<UserTypeProps> = ({item}) => {
     const navigate = useNavigate();
 
     const handelOnClick = ()=>{
-       navigate('details',{state:item})
+       navigate('posts/'+item.id,{state:item})// пости будуть в низу видаватися тобто в юзерпейдж
     };
     return (
         <div>

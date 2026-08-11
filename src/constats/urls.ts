@@ -1,11 +1,19 @@
-const baseURL="https://jsonplaceholder.typicode.com"
+const baseUrl="https://jsonplaceholder.typicode.com"
 export const urls = {
     users:{
-        allUsers:baseURL+"/users",
+        allUsers:baseUrl+"/users",
         byId:(id:number)=>{
-            return baseURL + '/'+id
+            return baseUrl + '/'+id
 
         }
     },
-    posts:{}
+    posts:{
+        getAllPosts:baseUrl+"/posts",
+        byId:(id:number)=>{
+            return baseUrl + '/'+id
+        },
+        userPostById:(id:number)=>{
+            return baseUrl + '/posts?userId='+id
+        }
+    }
 }
