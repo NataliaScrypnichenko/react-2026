@@ -17,4 +17,8 @@ return (
 <Link to={'details'} state={item}>{item.name}</Link>
 <button onClick={handelOnClick}> go to details</button>
 </div>
-);   };
+);  
+
+в SingleUserDetailsPage/ не повино бути інфо вона має бути в компоненті інфо завжди вся там відображається
+
+тут научусь натискати на користувача витягувати інформацію про нього а на кноппку про пости його 

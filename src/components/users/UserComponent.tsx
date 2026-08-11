@@ -12,7 +12,6 @@ const UserComponent:FC<UserTypeProps> = ({item}) => {
     const navigate = useNavigate();
 
     const handelOnClick = ()=>{
-        //сюди передаємо шлях куди переходити і об'єкт опшен
        navigate('details',{state:item})
     };
     return (
