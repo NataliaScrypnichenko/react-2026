@@ -12,7 +12,7 @@ export const routers= createBrowserRouter([
                     {path:'jsonplaceholder',element:<JsonplaceholderPage/>},
                     {path: 'dummyjson',element:<DummyjsonPage/>}
                 ]},
-            {path: '/posts',element: <PostsPage/>, children:[
+            {path: 'posts',element: <PostsPage/>, children:[
                     {path:'jsonplaceholder',element:<JsonplaceholderPage/>},
                     {path: 'dummyjson',element:<DummyjsonPage/>}
                 ]},

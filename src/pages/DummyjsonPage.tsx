@@ -4,6 +4,7 @@ const DummyjsonPage = () => {
     return (
         <div>
             DummyjsonPage content
+            <hr/>
         </div>
     );
 };

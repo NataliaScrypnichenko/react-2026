@@ -1,9 +1,17 @@
+import {Link, Outlet} from "react-router-dom";
 
 
 const CommentsPage = () => {
     return (
         <div>
-            CommentsPage content
+
+            <Outlet/>
+            <ul>
+                <li>
+                    <Link to={'jsonplaceholder'}>jsonplaceholder</Link>
+                </li>
+            </ul>
+            <hr/>
         </div>
     );
 };
