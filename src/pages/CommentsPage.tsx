@@ -1,17 +1,10 @@
-import {Link, Outlet} from "react-router-dom";
+import CommentsMenu from "../components/Menu/CommentsMenu/CommentsMenu.tsx";
 
 
 const CommentsPage = () => {
     return (
         <div>
-
-            <Outlet/>
-            <ul>
-                <li>
-                    <Link to={'jsonplaceholder'}>jsonplaceholder</Link>
-                </li>
-            </ul>
-            <hr/>
+            <CommentsMenu/>
         </div>
     );
 };

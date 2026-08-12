@@ -1,5 +1,5 @@
 import {Outlet} from 'react-router'
-import Menu from "../components/Menu/Menu.tsx";
+import Menu from "../../components/Menu/Menu.tsx";
 
 const Layout = () => {
     return (

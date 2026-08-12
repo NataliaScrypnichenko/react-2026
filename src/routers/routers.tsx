@@ -1,5 +1,5 @@
 import {createBrowserRouter} from "react-router-dom";
-import Layout from "../layout/Layout.tsx";
+import Layout from "../layouts/layout/Layout.tsx";
 import UsersPage from "../pages/UsersPage.tsx";
 import JsonplaceholderPage from "../pages/JsonplaceholderPage.tsx";
 import DummyjsonPage from "../pages/DummyjsonPage.tsx";
@@ -17,7 +17,8 @@ export const routers= createBrowserRouter([
                     {path: 'dummyjson',element:<DummyjsonPage/>}
                 ]},
             {path: 'comments',element: <CommentsPage/>, children:[
-                    {path: 'jsonplaceholder',element: <JsonplaceholderPage/>}
+                    {path: 'jsonplaceholder',element: <JsonplaceholderPage/>},
+                    {path: 'dummyjson',element:<DummyjsonPage/>}
                 ]},
         ]},
 ]);
