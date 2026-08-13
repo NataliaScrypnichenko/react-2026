@@ -1,9 +1,10 @@
+import UsersJsonplaceholder from "../components/users/UsersJsonplaceholder.tsx";
 
 
 const JsonplaceholderPage = () => {
     return (
         <div>
-            JsonplaceholderPage content
+            <UsersJsonplaceholder/>
         </div>
     );
 };

@@ -1,21 +1,26 @@
 import {useEffect, useState} from "react";
+import type {IUserJson} from "../../models/IUserJson.ts";
+import UserJsonplaceholderComponent from "./UserJsonplaceholderComponent.tsx";
 
 
 
 const UsersJsonplaceholder = () => {
 
-    const [users,setUsers] = useState([]);
- console.log(users);
-    useEffect(() => {
-        fetch(" https://jsonplaceholder.typicode.com/users")
-        .then(res => res.json())
-            .then(users => setUsers(users));
+    const [users, setUsers] = useState<IUserJson[]>([]);
 
-    },[])
+    useEffect(() => {
+        fetch("https://jsonplaceholder.typicode.com/users")
+            .then(res => res.json())
+            .then(item => setUsers(item));
+    })
 
     return (
         <div>
-            </div>
+            {
+                users.map((item) => (<UserJsonplaceholderComponent key={item.id} item={item} />))
+
+            }
+        </div>
     );
 };
 
