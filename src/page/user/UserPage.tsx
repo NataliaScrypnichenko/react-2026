@@ -1,11 +1,14 @@
+import {Outlet} from "react-router-dom";
 
+const UsersPage = () => {
 
-const UserPage = () => {
     return (
         <div>
+            <h2>Users</h2>
 
+            <Outlet/>
         </div>
     );
 };
 
-export default UserPage;
+export default UsersPage;
