@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import type {IUserJson} from "../../models/IUserJson.ts";
-import UserJsonplaceholderComponent from "./UserJsonplaceholderComponent.tsx";
-
+import UserJsonplaceholder from "./UserJsonplaceholder.tsx";
 
 
 const UsersJsonplaceholder = () => {
@@ -17,7 +16,7 @@ const UsersJsonplaceholder = () => {
     return (
         <div>
             {
-                users.map((item) => (<UserJsonplaceholderComponent key={item.id} item={item} />))
+                users.map((item) => (<UserJsonplaceholder key={item.id} item={item} />))
 
             }
         </div>
