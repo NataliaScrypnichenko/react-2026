@@ -1,36 +1,21 @@
 import {Link, Outlet} from "react-router-dom";
 
 
-
 const MenuLayout = () => {
-    return (
-        <div>
-            <Link to={'user'}>User</Link>
-            <br/>
-            <Link to="/users/jsonplaceholder">Users JSONPlaceholder</Link>
-            <br/>
-            <Link to="/users/dummyjson">Users DummyJSON</Link>
-
-            <br/>
-
-            <Link to="/posts/jsonplaceholder">Posts JSONPlaceholder</Link>
-
-            <br/>
-
-            <Link to="/posts/dummyjson">Posts DummyJSON</Link>
-
-            <br/>
-
-            <Link to="/comments/jsonplaceholder">Comments JSONPlaceholder</Link>
-
-            <br/>
-            <Link to="/comments/dummyjson">Comments DummyJSON</Link>
-
-            <Outlet/>
-
-        </div>
-    );
+        return (
+            <div>
+                    <ul>
+                            <li><Link to={"users"}>Users </Link></li>
+                            <li><Link to={'post'}>Posts</Link></li>
+                            <li><Link to={"comment"}>Comment</Link></li>
+                        <hr/>
+                            {/*<li><Link to={"jsonplaceholder"}>jsonplaceholder</Link></li>*/}
+                            {/*<li><Link to={"dummyjson"}>dummyjson</Link></li>*/}
+                    </ul>
+                    <hr/>
+                    <Outlet/>
+            </div>
+        );
 };
 
 export default MenuLayout;
-
