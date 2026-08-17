@@ -1,5 +1,5 @@
 import {type FC} from "react";
-import type {IUserJson} from "../../model/IUserJson.ts";
+import type {IUserJson} from "../../model/users/IUserJson.ts";
 
 
 type TypePropsUserJson = {
@@ -10,7 +10,7 @@ const UserJsonComponent:FC<TypePropsUserJson> = ({user}) => {
     return (
         <div>
             {
-           user.id
+           user.name
             }
         </div>
     );

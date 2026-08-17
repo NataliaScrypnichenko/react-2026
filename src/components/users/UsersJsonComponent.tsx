@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import type {IUserJson} from "../../model/IUserJson.ts";
+import type {IUserJson} from "../../model/users/IUserJson.ts";
 import UserJsonComponent from "./UserJsonComponent.tsx";
 
 
@@ -17,8 +17,6 @@ const UsersJsonplaceholder = () => {
 
     return (
         <div>
-
-            <h2>Users JSONPlaceholder</h2>
 
             {users.map(user => (<UserJsonComponent key={user.id} user={user} />))}
 

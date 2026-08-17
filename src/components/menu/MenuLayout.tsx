@@ -1,4 +1,4 @@
-import {Link, Outlet} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
 const MenuLayout = () => {
@@ -6,14 +6,10 @@ const MenuLayout = () => {
             <div>
                     <ul>
                             <li><Link to={"users"}>Users </Link></li>
-                            <li><Link to={'post'}>Posts</Link></li>
-                            <li><Link to={"comment"}>Comment</Link></li>
-                        <hr/>
-                            {/*<li><Link to={"jsonplaceholder"}>jsonplaceholder</Link></li>*/}
-                            {/*<li><Link to={"dummyjson"}>dummyjson</Link></li>*/}
+                            <li><Link to={'posts'}>Posts</Link></li>
+                            <li><Link to={"comments"}>Comments</Link></li>
                     </ul>
-                    <hr/>
-                    <Outlet/>
+
             </div>
         );
 };

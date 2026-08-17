@@ -1,28 +1,28 @@
 import {createBrowserRouter} from "react-router-dom";
 import Layout from "../layout/Layout.tsx";
-import UserPage from "../page/user/UserPage.tsx";
-import UserDummyjsonPage from "../page/user/UserDummyjsonPage.tsx";
-import PostsPage from "../page/post/PostsPage.tsx";
-import PostsDummyjsonPage from "../page/post/PostsDummyjsonPage.tsx";
-import PostsJsonplaceholderPage from "../page/post/PostsJsonplaceholderPage.tsx";
-import CommentsPage from "../page/comment/CommentsPage.tsx";
-import CommentsJsonplaceholderPage from "../page/comment/CommentsJsonplaceholderPage.tsx";
-import CommentsDummyjsonPage from "../page/comment/CommentsDummyjsonPage.tsx";
-import UserJsonplaceholderPage from "../page/user/UserJsonplaceholderPage.tsx";
+import UserPage from "../page/UserPage.tsx";
+import PostsPage from "../page/PostsPage.tsx";
+import CommentsPage from "../page/CommentsPage.tsx";
+import UsersJsonComponent from "../components/users/UsersJsonComponent.tsx";
+import UsersDummyComponent from "../components/users/UsersDummyComponent.tsx";
+import PostsDummyjsonComponent from "../components/posts/PostsDummyjsonComponent.tsx";
+import PostsJsonComponent from "../components/posts/PostsJsonComponent.tsx";
+import CommentsJsonComponent from "../components/comments/CommentsJsonComponent.tsx";
+import CommentsDummyjsonComponent from "../components/comments/CommentsDummyjsonComponent.tsx";
 
 export const routers = createBrowserRouter([
         {path:'/', element:<Layout/>, children:[
-                {path:'user',element:<UserPage/>, children:[
-                        {path:'jsonplaceholder', element:<UserJsonplaceholderPage/>},
-                        {path:'dummyjson',element:<UserDummyjsonPage/>}
+                {path:'users',element:<UserPage/>, children:[
+                        {path:'jsonplaceholder', element:<UsersJsonComponent/>},
+                        {path:'dummyjson',element:<UsersDummyComponent/>}
                     ]},
                 {path:'posts',element:<PostsPage/>, children:[
-                        {path:'jsonplaceholder', element:<PostsJsonplaceholderPage/>},
-                        {path:'dummyjson',element:<PostsDummyjsonPage/>}
+                        {path:'jsonplaceholder', element:<PostsJsonComponent/>},
+                        {path:'dummyjson',element:<PostsDummyjsonComponent/>}
                     ]},
                 {path:'comments',element:<CommentsPage/>, children:[
-                        {path:'jsonplaceholder', element:<CommentsJsonplaceholderPage/>},
-                        {path:'dummyjson',element:<CommentsDummyjsonPage/>}
+                        {path:'jsonplaceholder', element:<CommentsJsonComponent/>},
+                        {path:'dummyjson',element:<CommentsDummyjsonComponent/>}
                     ]},
             ]},
 ]
