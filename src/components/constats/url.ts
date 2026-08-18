@@ -1,6 +1,6 @@
 const baseUrlJson = 'https://jsonplaceholder.typicode.com'
 
-const baseUrlDemmy = 'https://dummyjson.com'
+const baseUrlDummy = 'https://dummyjson.com'
 
 export const urlJson={
     users:{
@@ -16,12 +16,12 @@ export const urlJson={
 
 export const urlDummy={
     users:{
-        allUsers:baseUrlDemmy+'/'+'users',
+        allUsers:baseUrlDummy+'/'+'users',
     },
     posts:{
-        allPosts:baseUrlDemmy+'/'+'posts',
+        allPosts:baseUrlDummy+'/'+'posts',
     },
     comments:{
-        allComments:baseUrlDemmy+'/'+'comments',
+        allComments:baseUrlDummy+'/'+'comments',
     }
 };
