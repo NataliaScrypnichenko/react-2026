@@ -1,4 +1,4 @@
-import {url} from "../component/constanta/const.ts";
+import {url} from "../component/constanta/constanta.ts";
 
 
 const baseUrl =url;

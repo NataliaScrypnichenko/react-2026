@@ -9,9 +9,8 @@ const UserComponent:FC<TypePropsUsers> = ({user}) => {
     return (
         <div>
            <div>
-               <h1>{user.username} {user.lastName} </h1>
+               <h1>{user.id}={user.username} {user.lastName} </h1>
                <p>{user.email}</p>
-               {/*<div>{user.image}</div>*/}
            </div>
         </div>
     );
