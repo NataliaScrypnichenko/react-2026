@@ -11,7 +11,7 @@ const UserComponent:FC<TypeUserProps> = ({user}) => {
 
     const navigate = useNavigate();
     const onButtonClickHandelNavigate =( () => {
-        navigate('carts/'+user.id)
+        navigate('/carts/'+user.id)
     });
 
     return (
