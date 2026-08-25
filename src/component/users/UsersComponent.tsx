@@ -3,14 +3,16 @@ import type {IUser} from "../../model/IUser.ts";
 import type {IUserResponseModel} from "../../model/IUserResponseModel.ts";
 import UserComponent from "./UserComponent.tsx";
 import "./UsersComponent.css"
+import {userService} from "../../sevice/api.service.tsx";
 
 const UsersComponent = () => {
 
     const [users, setUsers] = useState<IUser[]>([]);
 
     useEffect(() => {
-        fetch("https://dummyjson.com/users")
-        .then((value) =>value.json())
+        userService.getAllUsers()
+        // fetch("https://dummyjson.com/users")
+        // .then((value) =>value.json())
         .then(({users}:IUserResponseModel) => setUsers(users));
 
     },[])
