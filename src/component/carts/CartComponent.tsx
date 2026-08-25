@@ -9,7 +9,7 @@ type TypePropsCart = {
 const CartComponent:FC<TypePropsCart> = ({cart}) => {
 
     return (
-        <div>
+        <div className={"cart"}>
             <h3>Cart #{cart.id}</h3>
 
             <p>User ID: {cart.userId}</p>
@@ -22,7 +22,7 @@ const CartComponent:FC<TypePropsCart> = ({cart}) => {
 
             {
                 cart.products.map(product => (
-                    <div key={product.id}>
+                    <div  className={'product'} key={product.id}>
 
                         <p>Product: {product.title}</p>
                         <p>Price: {product.price}</p>

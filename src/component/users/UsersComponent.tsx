@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import type {IUser} from "../../model/IUser.ts";
 import type {IUserResponseModel} from "../../model/IUserResponseModel.ts";
 import UserComponent from "./UserComponent.tsx";
-
+import "./UsersComponent.css"
 
 const UsersComponent = () => {
 
@@ -15,7 +15,7 @@ const UsersComponent = () => {
 
     },[])
     return (
-        <div>
+        <div className="users_container">
             {
                 users.map((user: IUser) => <UserComponent key={user.id} user={user} />)
             }
