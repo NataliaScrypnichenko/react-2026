@@ -4,6 +4,7 @@ import type {ICart} from "../../model/ICart.ts";
 import type {ICartsResponseModel} from "../../model/ICartsResponseModel.ts";
 import CartComponent from "./CartComponent.tsx";
 import './CartsComponent.css';
+import {cartService} from "../../sevice/api.service.tsx";
 
 
 const CartsComponent = () => {
@@ -12,11 +13,9 @@ const CartsComponent = () => {
     const [carts, setCarts] = useState<ICart[]>([]);
 
     useEffect(() => {
-        // cartService.getAllCarts()
-        fetch(`https://dummyjson.com/carts/user/${id}`)
-        .then((value) =>value.json())
+        cartService.getAllCarts(Number(id))
             .then(({carts}:ICartsResponseModel) => setCarts(carts))
-    },[])
+    },[id])
 
 
     return (
