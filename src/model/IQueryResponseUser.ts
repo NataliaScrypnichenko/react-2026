@@ -5,4 +5,4 @@ export interface IQueryResponseUser {
 	total: number;
 	skip: number;
 	limit: number;
-}
+};

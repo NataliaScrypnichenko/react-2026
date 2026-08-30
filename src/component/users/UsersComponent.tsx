@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import type {IUser} from "../../model/IUser.ts";
 import UserComponent from "./UserComponent.tsx";
 import {getAllUsers} from "../../service/api.service.tsx";
-import type {IQueryResponseUser} from "../../model/IQueryResponseUser.ts";
+
 
 
 const UsersComponent = () => {
@@ -13,11 +13,10 @@ const UsersComponent = () => {
     const [query] = useSearchParams();
     useEffect(() => {
 
-        const page= query.get('page');
+        const page= query.get('page') || '1';
 
         getAllUsers(page || '')
-
-            .then(({users}:IQueryResponseUser) => setUsers(users))
+            .then(value => setUsers(value.users))
     },[query]);
 
 

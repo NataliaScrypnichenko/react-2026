@@ -6,24 +6,18 @@ const PaginationComponent = () => {
 
     const [query,setQuery] = useSearchParams({page: '1'});
 
+               let currentPage = Number(query.get('page') || '1');
     return (
         <div>
 
             <button onClick={()=>{
-               const page = query.get('page');
-               if(page){
-                        let counterPage=+page;
-                        counterPage++;
-                        setQuery({page:(counterPage).toString()});
-               }
+
+               setQuery({page:(++currentPage).toString()})
             }}>вперед</button>
 
             <button onClick={()=>{
-                const page = query.get('page');
-                if(page){
-                    let counterPage=+page;
-                    counterPage--;
-                    setQuery({page:(counterPage).toString()});
+                if (currentPage >1) {// для того щоб не була менша сторінка
+                setQuery({page:(--currentPage).toString()})
                 }
             }}>назад</button>
         </div>
