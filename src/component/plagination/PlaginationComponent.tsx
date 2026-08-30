@@ -5,18 +5,17 @@ const PlaginationComponent = () => {
 
     const [query,setQuery] = useSearchParams({page:'1'});
 
-    let currentPage=Number(query.get('currentPage') || '1')
+    let currentPage=Number(query.get('page') || '1')
 
     return (
         <div>
             <button onClick={() =>(
-                setQuery({page:(++page).toString()})
-            ) }>
-
-            prev</button>
-            <button>
-
-           next </button>
+                setQuery({page:(++currentPage).toString()})
+            ) }>prev</button>
+            
+            <button onClick={() =>(
+                setQuery({page:(++currentPage).toString()})
+            ) }>next </button>
         </div>
     );
 };
