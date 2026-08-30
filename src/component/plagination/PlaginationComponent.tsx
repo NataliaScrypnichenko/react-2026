@@ -10,6 +10,7 @@ const PlaginationComponent = () => {
     return (
         <div>
             <button onClick={() =>(
+
                 setQuery({page:(++currentPage).toString()})
             ) }>prev</button>
             

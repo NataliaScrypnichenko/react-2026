@@ -5,10 +5,9 @@ import PlaginationComponent from "../component/plagination/PlaginationComponent.
 const LayoutPagination = () => {
     return (
         <div>
-            <Outlet/>
-            LayoutPagination
             <PlaginationComponent/>
             <hr/>
+            <Outlet/>
         </div>
     );
 };

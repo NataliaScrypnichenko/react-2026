@@ -5,9 +5,9 @@ import Menu from "../menu/Menu.tsx";
 const Layout = () => {
     return (
         <div>
-            <Outlet/>
             <Menu/>
             <hr/>
+            <Outlet/>
         </div>
     );
 };
