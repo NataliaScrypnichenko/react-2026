@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import type {IUser} from "../../model/IUser.ts";
 import UserComponent from "./UserComponent.tsx";
 import {getAllUsers} from "../../service/api.service.tsx";
+import type {IQueryResponseUser} from "../../model/IQueryResponseUser.ts";
 
 
 const UsersComponent = () => {
@@ -15,8 +16,8 @@ const UsersComponent = () => {
         const page= query.get('page');
 
         getAllUsers(page || '')
-            // @ts-ignore
-            .then(value =>setUsers(value.users));
+
+            .then(({users}:IQueryResponseUser) => setUsers(users))
     },[query]);
 
 

@@ -1,5 +1,7 @@
+import type {IUser} from "./IUser.ts";
+
 export interface IQueryResponseUser {
-	users: number;
+	users: IUser[];
 	total: number;
 	skip: number;
 	limit: number;
