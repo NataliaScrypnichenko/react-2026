@@ -6,7 +6,7 @@ type TypePropsProduct={
 }
 
 
-const PoductComponent:FC<TypePropsProduct> = ({product}) => {
+const ProductComponent:FC<TypePropsProduct> = ({product}) => {
     return (
         <div>
             <p>{product.id}{product.title}</p>
@@ -15,4 +15,4 @@ const PoductComponent:FC<TypePropsProduct> = ({product}) => {
     );
 };
 
-export default PoductComponent;
+export default ProductComponent;

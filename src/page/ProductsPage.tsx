@@ -1,10 +1,9 @@
-import PoductsComponent from "../component/products/PoductsComponent.tsx";
-
+import ProductsComponent from "../component/products/ProductsComponent.tsx";
 
 const ProductsPage = () => {
     return (
         <div>
-            <PoductsComponent/>
+            <ProductsComponent/>
         </div>
     );
 };

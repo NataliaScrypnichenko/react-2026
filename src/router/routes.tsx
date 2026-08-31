@@ -9,4 +9,4 @@ export const routes = createBrowserRouter([
                     {path:'products', element:<ProductsPage/>}
                 ]}
         ]}
-])
+]);

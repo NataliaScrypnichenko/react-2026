@@ -5,5 +5,5 @@ export interface IResponseProduct {
 	total: number;
 	skip: number;
 	limit: number;
-}
+};
 

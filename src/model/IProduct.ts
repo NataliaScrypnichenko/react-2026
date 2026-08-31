@@ -39,4 +39,4 @@ export interface Meta {
 	updatedAt: string;
 	barcode: string;
 	qrCode: string;
-}
+};
