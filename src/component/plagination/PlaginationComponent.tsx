@@ -8,10 +8,11 @@ const PlaginationComponent = () => {
     // console.log(currentPage)
     return (
         <div>
-            <button onClick={() => (
-
-                setQuery({page: (++currentPage).toString()})
-            )}>next
+            <button onClick={() => {
+                if (currentPage < 7) {
+                    setQuery({page: (++currentPage).toString()})
+                }
+            }}>next
             </button>
             <button onClick={() => {
                 if (currentPage > 1) {

@@ -5,6 +5,7 @@ import {getProducts} from "../../service/api.servise.tsx";
 import ProductComponent from "./ProductComponent.tsx";
 import type {IResponseProduct} from "../../model/IResponseProduct.ts";
 
+
 const ProductsComponent = () => {
 
     const [query] = useSearchParams({page:'1'});
