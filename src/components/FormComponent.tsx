@@ -10,7 +10,7 @@ interface IFormProps{
 const FormComponent = () => {
 
     const {handleSubmit, register} = useForm<IFormProps>();
-    console.log(register);
+    // console.log(register);
 
     const customHandle=(formDataProps:IFormProps) =>{
         console.log(formDataProps)
