@@ -1,73 +1,188 @@
-# React + TypeScript + Vite
+Axios робить те саме, але часто код виходить простішим і зручнішим.Він відає об'єкти іншого типу, fetch=відає масив із юзерами то Axios цей масив обгортає ще в один об'єкт в якого є купа мето інформації яка в майбутньому може знадобитися
+"axios":"^1.20.0"
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+Axios у React — це бібліотека для роботи з HTTP-запитами. Простими словами: вона допомагає React-програмі отримувати дані з сервера та відправляти дані на сервер.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Ти вже працювала з fetch, наприклад відає масив із юзерами 
+fetch('https://dummyjson.com/users')
+.then(res => res.json())
+.then(data => console.log(data));
 
-## Expanding the ESLint configuration
+Axios робить те саме, але часто код виходить простішим і зручнішим.Він відає об'єкти іншого типу, fetch=відає масив із юзерами то Axios цей масив обгортає ще в один об'єкт в якого є купа мето інформації яка в майбутньому може знадобитися
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Для чого використовують Axios?
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Наприклад, у тебе є API:
+https://dummyjson.com/users
+І ти хочеш:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+отримати список користувачів;
+отримати одного користувача;
+створити нового;
+змінити користувача;
+видалити користувача.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
+Для цього використовують HTTP-методи:
+
+Метод	Для чого
+GET	    отримати дані
+POST	створити / відправити дані
+PUT	    повністю змінити дані
+PATCH	частково змінити дані
+DELETE	видалити дані
+
+Axios дозволяє легко виконувати всі ці запити.
+
+3. GET — отримати дані
+Це найчастіший запит, з яким ти зараз працюєш.
+
+Через fetch:
+fetch('https://dummyjson.com/users')
+.then(res => res.json())
+.then(data => console.log(data));
+
+Через Axios:
+axios.get('https://dummyjson.com/users')
+.then(response => {
+console.log(response.data);
+});
+
+Тут важливо запам'ятати:
+response.data
+Axios сам перетворює JSON-відповідь у JavaScript-об'єкт.
+
+Тобто з fetch ти робила:
+res.json()
+
+А з Axios:
+response.data
+
+4. Axios + async/await
+
+У React ти дуже часто будеш бачити саме такий варіант:
+
+const getUsers = async () => {
+const response = await axios.get('https://dummyjson.com/users');
+    console.log(response.data); };
+
+Або у useEffect:
+
+useEffect(() => {
+    const getUsers = async () => {
+    const response = await axios.get('https://dummyjson.com/users');
+        setUsers(response.data.users);
+    };
+
+    getUsers();
+}, []);
+
+Це дуже схоже на те, що ти вже робила з fetch.
+
+5. Що таке response?
+
+Наприклад:
+
+const response = await axios.get('https://dummyjson.com/users');
+
+response містить не тільки самі користувацькі дані.
+У ньому є приблизно:
+{
+data: {...},
+status: 200,
+statusText: "OK",
+headers: {...},
+...
+}
+А самі дані знаходяться тут:
+response.data
+Наприклад:
+console.log(response.data.users);
+
+6. POST — створити дані
+Наприклад, хочемо створити користувача.
+
+const response = await axios.post(
+    'https://dummyjson.com/users/add',
+    {
+      firstName: 'Natalia',
+      age: 30
+    }
+);
+console.log(response.data);
+Тут:
+axios.post(URL, DATA)
+Перший параметр:
+'https://dummyjson.com/users/add'— куди відправляємо.
+Другий:{
+firstName: 'Natalia',
+age: 30
+} — що відправляємо.
+
+7. PUT — повністю змінити
+   const response = await axios.put(
+   'https://dummyjson.com/users/1',
+   {
+   firstName: 'Anna',
+   age: 25
+   }
+   );
+
+PUT зазвичай означає:аміни об'єкт новими даними.
+
+8. PATCH — частково змінити
+Наприклад, у користувача є:
+{
+id: 1,
+firstName: 'John',
+age: 30,
+email: 'john@gmail.com'
+}
+Ми хочемо змінити тільки ім'я.
+const response = await axios.patch(
+      'https://dummyjson.com/users/1',
+      { firstName: 'Peter' });
+Тобто:
+PUT   → змінити весь об'єкт
+PATCH → змінити частину об'єкта
+
+9. DELETE — видалити
+   const response = await axios.delete(
+      'https://dummyjson.com/users/1'
+   );
+
+console.log(response.data);
+Тобто:
+axios.delete(URL)
+
+11. А ще краще — зробити api.service.ts
+
+Ти вже працювала з api.service.ts. Axios дуже добре підходить для такого підходу.
+
+Наприклад:
+
+import axios from 'axios';
+
+const baseUrl = 'https://dummyjson.com';
+
+export const userService = {
+getAllUsers: async () => {
+const response = await axios.get(`${baseUrl}/users`);
+
+        return response.data;
     },
-  },
-])
-```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+    getUserById: async (id: number) => {
+        const response = await axios.get(`${baseUrl}/users/${id}`);
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
+        return response.data;
     },
-  },
-])
-```
+
+    deleteUser: async (id: number) => {
+        const response = await axios.delete(`${baseUrl}/users/${id}`);
+
+        return response.data;
+    }
+};
