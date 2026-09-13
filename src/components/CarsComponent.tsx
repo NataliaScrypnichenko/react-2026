@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import type {ICar} from "../madel/ICar.ts";
-import {getAllCars} from "../service/api.car.services.tsx";
+import { getAllCars} from "../service/api.car.services.tsx";
 import CarComponent from "./CarComponent.tsx";
 import './CarsComponent.css'
 
@@ -10,6 +10,7 @@ const CarsComponent = () => {
     useEffect(() => {
         getAllCars()
             .then(value => setCars(value));
+
     },[]);
 
     return (

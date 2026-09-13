@@ -1,9 +1,13 @@
+import FromCarComponent from "../components/FromCarComponent.tsx";
+
 
 
 export const CarsCreatPage = () => {
+
+
     return (
         <div>
-            CarsCreatPage
+            <FromCarComponent/>
         </div>
     );
 };
