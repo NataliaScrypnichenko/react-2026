@@ -1,9 +1,20 @@
+import type {FC} from "react";
+import type {ICar} from "../madel/ICar.ts";
+import './CarComponent.css'
 
+type TypePromiseCar = {
+    car: ICar;
+};
 
-const CarComponent = () => {
+const CarComponent:FC <TypePromiseCar> = ({car}) => {
     return (
         <div>
-            CarComponent
+            <div className={'car_div'}>
+                <p>id: {car.id}</p>
+                <p>brand: {car.brand}</p>
+                <p>price: {car.price}</p>
+                <p>yer: {car.year}</p>
+            </div>
         </div>
     );
 };
