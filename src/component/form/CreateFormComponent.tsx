@@ -1,14 +1,15 @@
 import {useForm} from "react-hook-form";
 import type {ICar} from "../../model/ICar.ts";
-
 import {addCreateCar} from "../../services/api.car.services.tsx";
+import {carValidator} from "../../validator/carValidator.tsx";
+import {joiResolver} from "@hookform/resolvers/joi";
 
 
 const CreateFormComponent = () => {
 
     const{handleSubmit,register,formState:{errors,isValid}} =useForm<ICar>({
         mode:'all',
-        // resolver:joiResolver(carValidator)
+        resolver:joiResolver(carValidator)
     })
 
     const createHandle=(data:ICar)=>{
