@@ -14,7 +14,7 @@ const CreateFormComponent = () => {
 
     const createHandle=(data:ICar)=>{
         addCreateCar(data)
-        console.log(data)
+        // console.log(data)
     }
 
     return (
