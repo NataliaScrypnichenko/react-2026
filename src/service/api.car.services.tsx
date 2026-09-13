@@ -13,13 +13,6 @@ export const getAllCars = async ():Promise<ICar[]> => {
     return cars;
 };
 
-// export const getAllUsers = async ():Promise<IUser[]> => {
-//     //саме в {data} лежить інформація яка потрібна нам і буде містити такі параметри як в <IUser[]>
-//     const {data}= await axiosInstance.get<IUser[]>("/users");
-//     return data;// далі використовується так само як і раніше useState
-//     // const response= await axiosInstance.get<IUser[]>("/users");
-//     // console.log(response)   http://185.69.152.209/carsAPI/v1
-// }http://bigbird.space/carsAPI/v1/cars
 export const creatAddCars = async (car:ICar):Promise<void> => {
     await axiosInstance.post<ICar[]>('/cars',car)
 }
