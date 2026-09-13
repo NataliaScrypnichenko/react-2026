@@ -1,10 +1,9 @@
-import CarsComponent from "../component/CarsComponent.tsx";
+import CarsComponent from "../component/cars/CarsComponent.tsx";
 
 
 const CarsPage = () => {
     return (
         <div>
-            CarsPage
             <CarsComponent/>
         </div>
     );
