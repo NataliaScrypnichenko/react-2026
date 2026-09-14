@@ -8,15 +8,20 @@ import './CarsComponent.css'
 const CarsComponent = () => {
 
     const [cars, setCars] = useState<ICar[]>([]);
+     const[error,setError]= useState<string>('')
 
-    useEffect(() => {
-        getAllCars()
-            .then(value => setCars(value));
+      useEffect(() => {
+          getAllCars()
+            .then(value => setCars(value))
+            .catch(() => {
+                setError('Не вдалося отримати список автомобілів');
 
-    },[])
+            });
+      }, []);
 
     return (
         <div className={'container_div'}>
+            {error && <p>{error}</p>}
             {
                 cars.map((car) => (<CarComponent car={car} key={car.id} />))
             }

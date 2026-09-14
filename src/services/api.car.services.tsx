@@ -1,4 +1,4 @@
-import * as axios from "axios";
+import  axios from "axios";
 import type {ICar} from "../model/ICar.ts";
 
 export const axiosInstance = axios.create({
