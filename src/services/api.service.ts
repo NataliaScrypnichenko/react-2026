@@ -46,7 +46,7 @@ axiosInstance.interceptors.request.use((requestObject)=>{
     }
     return requestObject;
 });
-// тоб то коли переходим з логінації на с торінку і дає помилку 401 то потрібно зайти провірити код =>Network=>product=>authorization
+// тоб то коли переходим з логінації на сторінку і дає помилку 401 то потрібно зайти провірити код =>Network=>product=>authorization
 
 //.interceptors не буде діяти на login бо він POST запит, а на LoadAuthProducts бо він GET
 
