@@ -1,4 +1,4 @@
-import LoginComponent from "../component/LoginComponent.tsx";
+import LoginComponent from "../component/login/LoginComponent.tsx";
 
 const LoginPage = () => {
     return (

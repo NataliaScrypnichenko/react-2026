@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import {Login} from "../service/api.servise.ts";
+import {Login} from "../../service/api.servise.ts";
 
 //робим логінацію як переходим на сторінку  і тут же передаємо інформацію тобто він уже є
 const LoginComponent = () => {
@@ -15,7 +15,7 @@ const LoginComponent = () => {
 
     return (
         <div>
-            LoginComponent
+
         </div>
     );
 };

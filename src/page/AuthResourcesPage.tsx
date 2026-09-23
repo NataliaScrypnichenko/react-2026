@@ -1,9 +1,12 @@
+import ProductsComponent from "../component/product/ProductsComponent.tsx";
 
 
 const AuthResourcesPage = () => {
+
     return (
         <div>
-            AuthResourcesPage
+
+            <ProductsComponent/>
         </div>
     );
 };
