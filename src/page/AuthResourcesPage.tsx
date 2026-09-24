@@ -5,8 +5,7 @@ const AuthResourcesPage = () => {
 
     return (
         <div>
-
-            <ProductsComponent/>
+             <ProductsComponent/>
         </div>
     );
 };
