@@ -10,7 +10,7 @@ const ProductsComponent = () => {
     }, []);
     return (
         <div>
-44
+
         </div>
     );
 };
