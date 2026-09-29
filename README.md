@@ -1,73 +1,22 @@
-# React + TypeScript + Vite
+memo()
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+//якщо є багато ланцюгових реакцій то не повино трігатися повторно, то потрібно взяти в спец. функцію
+// memo()- тобто він не буде змінюватися тобто не будуть приходити ні які пропси в всередину
+// від повідно бачимо поєтапність життєвого циклу цього чи іншого компонента з поєднанням з іншими компонентами
+// ми покищо не побачимо,можемо зробити тільки тоді коли у нас компонент якийсь буде знищуватися тобтог зникати
+// Наприклад коли ми з сторінки на сторінку переходиом це те якщо ми в UsersComponent будем додатково використовувати
+//  return ()=> {
+//             console.log('unsubscribe');
+//         } то де б вона повинна була б спрацювати-по факту якщо при натисканні кнопки у нас  UsersComponent знищувався
+// то б то ми переходили або виходили з нього з відображення то відповідно то цей ретьорн з працював би
+// Якщо було таке АРІ де принатискані видалялось юзер  то в його в useEffect йогго функція unsubscribe' видавала результат
+//житевий цикл компонента.Mounting= компонент виконується- рендер,дом структура і абдейт-updating,якщо у нас є setState= то
+// відповідно є фаза updating викликає підфазу рірендиру якщо компонент знищується то відбуваться Unmounting- розмонтовування компонента
+// тобто ф-я unsubscribe' спрацює
+// Є класові компонети де є спеціализовані ф-її-componentDidMount(аналог useEffect), componentDidUpdate-(аналог useEffect з масивом залежності)
+// componentDidUnmout- (це аналог unsubscribe функції )
 
-Currently, two official plugins are available:
+// memo використовуємо тільки тоді коли компонент дуже важкий то його можна мемонізувати то бто компонент
+// великий і в нього є логіка,цикли т.д.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+useCallback
