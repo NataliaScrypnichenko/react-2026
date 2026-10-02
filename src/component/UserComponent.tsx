@@ -1,19 +1,13 @@
 import {type FC, memo} from "react";
-//тут буде приходити об'єкт, вели функцію і вона нічого не виводить,але її відобразити потрібно в UsersComponent
-const UserComponent : FC<{foo:()=> void}> = memo(() => {
+
+const UserComponent : FC<{foo:()=> void,arr: number[],  item:{name:string}}> = memo(({arr,item}) => {
     console.log('user')
+    console.log(arr)
     return (
         <div>
-
+            {item.name}
         </div>
     );
 })
 
 export default UserComponent;
-// коли вели фунцкію foo:() то ніби вийшло так що memo перестала працювати,
-// але насправді  вона працює (ТОБТО ВОНА БУДЕ кешувати функцію тільки якщо у випадку в неї не змінюються пропси
-// але в цьму прикладі пропси змінилися)
-// тобто це об'єкт foo на сторінці usersComponent,коли ми їдемо через рірендер через setUsers(value) то ф-я перестворюється
-// це foo абсолютно нове посилання відразу ми маємо (users, user,users,user
-// )
-//ЯК ЦЕ МОЖНА ВИПРАВИТТИ
