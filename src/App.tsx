@@ -1,16 +1,47 @@
 import './App.css'
-import UsersComponent from "./component/UsersComponent.tsx";
-import useFetch from "./hooks/useFetch.tsx";
+import LeftBranch from "./component/LeftBranch.tsx";
+import RightBranch from "./component/RightBranch.tsx";
+import {init, MyContext} from "./contetx/MyContext.tsx";
+import {useState} from "react";
+
 
 function App() {
-   console.log("App");
+  // саме сховище буде знаходитися на рівні АРРтам де контекст визначає свій перший рівень то useState<number>(0)
 
-   useFetch()
+    const [counter, setCounter] = useState<number>(init.counterValue)
+
   return (
     <>
-      <UsersComponent/>
+      {/*робимо сховище яке буде шерити між всіма рівнями робимо в окремій дерикторії MyContext= це об'єкт який створила функфія
+        createContext
+        <MyContext.Provider value={init}>- вставляєм ініт але це діяло тільки в одном випадку, якщо тут були просто на отримання
+         данних на зчитування даних цього  каунтервелью.
+         Для того щоб дані змінювалися будуєм власний об'єкт*/}
+        <MyContext.Provider value={{
+            counterValue:counter,
+            //obj в майбутньому це counterValue точка від якої почнемо крокувати
+            // (++obj-спочатку збільшили а потім передали посилання)
+            increment: (obj)=> {
+                console.log(obj);
+                 setCounter(++obj);
+                 console.log(obj);
+            }
+        }} >
+                 {/* після цього на підрівнях можемо викликати хук  */}
+                 <LeftBranch/>
+                 <RightBranch/>
+        </MyContext.Provider>
+
     </>
   )
 }
 
 export default App
+// якщо хочу MyContext використовувати в якості сховища то обовяжково потрібно завязувати його на стейті useState
+// і завязувати його цілком, тобто дефолтне значення це те що лежить у нас на рівні MyContext нашого дефолтного об'єкта
+// counter буде підтягувати значення щойно воно зміниться він в контекст буде впроваджувати кожного разу оновленне значення
+// від повідно якщо воно т ут оновлене то в бренчах  там де витягуємо counterValue то витягаємо поточне значення з точки АРР
+
+// використовувати= підтягуіання залогіненого користувача на різні компоненти тобто том де він логінится а підтягується кркугом
+// апдейтить його чи символізує хедер з аваторкою і неймом його, перейти на світлу чи темну тему
+// міняю логіку асхему залишаюто все таксамо буде працювати.Можна створювати і вкладати в інший коньекст багато
