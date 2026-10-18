@@ -10,8 +10,22 @@
   min-height: 100vh;
 }
 
+.branch-card {
+  margin: 12px;
+  padding: 15px;
+  border: 2px solid;
+  border-radius: 8px;
+}
+
+.branch-card.light {
+  border-color: #4a90e2;
+}
+
+.branch-card.dark {
+  border-color: #f0c674;
+}
 button {
-  padding: 10px 15px;
+  padding: 8px 12px;
   margin: 10px;
   cursor: pointer;
 }

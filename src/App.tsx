@@ -3,6 +3,7 @@ import MainComponent from "./components/MainComponent.tsx";
 import HeaderComponent from "./components/HeaderComponent.tsx";
 import {MyContext} from "./context/MyContext.tsx";
 import {useState} from "react";
+import ThemeContainerComponent from "./components/ThemeContainerComponent.tsx";
 
 
 function App() {
@@ -19,14 +20,17 @@ function App() {
 
   return (
     <>
+      {/*  Provider передає тему та функцію.*/}
       <MyContext.Provider value={{
-        theme: 'light',
+          theme: theme,
         toggleTheme: toggleTheme,
       }}>
-          <div className={theme}>
-               <MainComponent/>
-               <HeaderComponent/>
-          </div>
+          {/*ThemeContainerComponent читає тему через useContext і встановлює CSS-клас.*/}
+          <ThemeContainerComponent>
+              {/*Усередині контейнера відображаються обидві гілки дерева.*/}
+              <MainComponent />
+              <HeaderComponent />
+          </ThemeContainerComponent>
       </MyContext.Provider>
     </>
   )

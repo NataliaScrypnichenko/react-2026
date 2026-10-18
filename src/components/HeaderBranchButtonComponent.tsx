@@ -4,11 +4,12 @@ import {MyContext} from "../context/MyContext.tsx";
 
 const HeaderBranchButtonComponent = () => {
     //хук дозволяє мені підключити кнопку
-    const {toggleTheme} = useContext(MyContext);
+    const {theme,toggleTheme} = useContext(MyContext);
 
     return (
-        <div>
-            Header Branch Button Component
+        <div className={`branch-card ${theme}`}>
+            <h3>Header Branch Button Component</h3>
+            <p>Це четверта гілка заголовка з кнопкою зміни теми де і присутня ця кнопка.</p>
             {/*передаю сюди функцію яка буде викликати після натискання кнопки*/}
             <button onClick={toggleTheme}>
                 change the theme color
