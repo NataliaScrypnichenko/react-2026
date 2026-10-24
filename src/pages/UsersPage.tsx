@@ -1,8 +1,9 @@
 //після того як створили сховище то ідем на пейдж
 // розложити по сервісу
-import {useAppSelector, userSliceActions} from "../main.tsx";
-import {useDispatch} from "react-redux";
 import {useEffect} from "react";
+import {useAppSelector} from "../redux/hooks/useAppSelector.tsx";
+import {userSliceActions} from "../redux/slices/userSlice/userSlice.ts";
+import {useAppDispatch} from "../redux/hooks/useAppDispatch.tsx";
 
 
 const UsersPage = () => {
@@ -21,18 +22,14 @@ const UsersPage = () => {
     // console.log(userSlice);//тобто ми змогли відхопити на іншій пейджі
     const {users} =useAppSelector(({userSlice}) => userSlice);
 // можем визвати на пряму loadUsers
-    const dispatch = useDispatch();//це фя яка викликає інші ф-ї для того щоб вони виконались
-
+// ми типізуівали діспач
+//     const dispatch = useDispatch();//це фя яка викликає інші ф-ї для того щоб вони виконались
+ const dispatch = useAppDispatch();//він типізований і знатиме що
+    // всередині лежить юзерслайс з його типізацією- відповідно все працюватиме стабільніше
 
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(res => res.json())
-            .then(value => {
-               // dispatch( userSlice.actions.loadUsers(value))- це можна записати по іншому
-                //може давати помилки тому що нічого не типізовано
-                // тобто тут це loadUsers є обгорткую для loadUsers функції з сховища і value це є з сховища-action
-                dispatch(userSliceActions.loadUsers(value));
-            })
+        dispatch(userSliceActions.loadUsers())//loadUsers() який викликаєм тут то це обгортка
+
     }, []);
 
     return (
