@@ -20,7 +20,7 @@ const UsersPage = () => {
     // useAppSelector({userSlice} => userSlice)
     // const userSlice =useAppSelector(({userSlice}) => userSlice);
     // console.log(userSlice);//тобто ми змогли відхопити на іншій пейджі
-    const {users} =useAppSelector(({userSlice}) => userSlice);
+    const {users, loadState} =useAppSelector(({userSlice}) => userSlice);
 // можем визвати на пряму loadUsers
 // ми типізуівали діспач
 //     const dispatch = useDispatch();//це фя яка викликає інші ф-ї для того щоб вони виконались
@@ -34,6 +34,7 @@ const UsersPage = () => {
 
     return (
         <div>
+            { !loadState && <div>Loading...</div>}
             {
                 users.map((user) => (<div key={user.id}>{user.name}</div>))
             //  щоб наповнити це то потрібно визвати функцію loadUsers
