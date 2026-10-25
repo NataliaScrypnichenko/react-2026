@@ -13,7 +13,7 @@ const initialState: UserSliceType = {users:[]};
 
 // створюємо loadUsers за допомоги createAsyncThunk()-саме цей об'єкт який поверниться з відси він і має fulfilled
 // тобто у нас буде ф-я яка буде createAsyncThunk приймає два аргумента перший-імя до якого слайса належить/ і назва самої функції,другий аргумент це колбек функція і вона також матиме
-// два аргумента thunkAPI-
+// два аргумента thunkAPI-перетворювач асинхроних операцій
 const loadUsers=createAsyncThunk(
     'userSlice/loadUsers',
     async (_,thunkAPI)=>{
@@ -39,9 +39,10 @@ const loadUsers=createAsyncThunk(
 // три характеристики name-стрынгова назва так як і слайс,initialState:{},//тобто початковий стан,
 // reducers:{}//метод який впливає на початковий стан
 export const userSlice= createSlice({
-    name: "userSlice",//ніде не використовується тіль для пошуку кімнати
+    name: "userSlice",//ніде не використовується тільки для пошуку кімнати
     initialState:initialState,//тобто початковий стан
     reducers:{},
+    //для асинхроних операцій сигмент
     extraReducers:builder => {
         // буде ф-я loadUsers виконувати свій проміс fulfilled і він буде наповнений то інформація яку він отримає
         // попаде в action,ми тут таксамо будемо мати доступ до стейта initialState:initialState і всіх
