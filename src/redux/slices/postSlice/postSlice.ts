@@ -12,7 +12,7 @@ type postSliceType={
 const initialStatePost:postSliceType = {posts: []};
 
 const loadPosts=createAsyncThunk(
-        'usersSlice/loadUsers',
+        'postSlice/loadPosts',
         async (_,thunkAPI)=>{
            try{
                const posts=await fetch('https://jsonplaceholder.typicode.com/posts',)
