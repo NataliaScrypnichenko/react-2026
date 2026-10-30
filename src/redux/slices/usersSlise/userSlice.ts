@@ -1,13 +1,16 @@
-import {createAsyncThunk, createSlice, type PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isFulfilled, type PayloadAction} from "@reduxjs/toolkit";
 import type {IUser} from "../../../models/IUser.ts";
 
 //4. формуємо початковий стан для початкового стану initialState і її потрібно типізувати
 type UserSliceType={
     users:IUser[],
+    user:IUser | null,
+    loadState: boolean,// отримання стану завантаження тру або фолс
 };
 
 //5.створю об'єкт який характеризує початтковий стан
-const initialState:UserSliceType = {users:[]};
+const initialState:UserSliceType = {users:[],user: null,loadState: false};
+
 //створюємо loadUsers через createAsyncThunk і тут повернится х-ка fulfilled
  const loadUsers=createAsyncThunk(
     'usersSlice/loadUsers',
@@ -16,7 +19,8 @@ const initialState:UserSliceType = {users:[]};
       try{
           const users= await fetch('https://jsonplaceholder.typicode.com/users')
               .then(value => value.json());
-
+          //дозволяє нам
+          // thunkAPI.dispatch(userSliceActions.changeLoadState(true))
           return thunkAPI.fulfillWithValue(users);
          // throw new Error();
       }catch(e){
@@ -27,12 +31,37 @@ const initialState:UserSliceType = {users:[]};
 
       });
 
+//створюємо loadUser через createAsyncThunk через цю функцію буду зчитувати інформацію про юзера з айдішкою
+const loadUser=createAsyncThunk(
+    'usersSlice/loadUser',
+    async (id:string,thunkAPI)=>{
+
+        try{
+            const user= await fetch('https://jsonplaceholder.typicode.com/users/'+id)
+                .then(value => value.json());
+                // thunkAPI.dispatch(userSliceActions.changeLoadState(true))=виконується однаково і можна перенести це в кейси
+
+            return thunkAPI.fulfillWithValue(user);
+            // throw new Error();
+        }catch(e){
+
+            console.error(e);
+            return thunkAPI.rejectWithValue('some error occurred');
+        }
+
+    });
+
 
 //3. формуємо userSlice і визначаємо три характеристики
 export const userSlice = createSlice({
     name: "userSlice",
     initialState:initialState ,// {users:[]}=початковий стан і він типізован і впровадим об'єк який харак.його
-    reducers: {},// cтан який впливає на поточний стан в ньому будуть ф-ї
+    //тут ідуть не синхроні операції
+    reducers: {
+        changeLoadState:(state,action:PayloadAction<boolean>)=>{
+            state.loadState=action.payload;
+        }
+    },// cтан який впливає на поточний стан в ньому будуть ф-ї
         //  6.функція буде завантажувати об'єкти і відправляти в середину initialState
         // loadUsers:(state,action:PayloadAction<IUser[]>)=>{
         //     //тут не можем використати асинхрону ф-ю то тобі схопити результат асинхронності
@@ -41,6 +70,7 @@ export const userSlice = createSlice({
         //     //payload-це те що передаємо аргумент як масив users
         //     state.users = action.payload;//дістаємо payload вони типізовані під users і записуємо state в комірку users
         //2.3= loadUsers видаляєм воно тут не повино існувати для асинхроних операцій існує спеціальне місцк
+    // тут асинхроні операції
     extraReducers:builder =>
         // 2.4= це для асинхроних операцій і тут потрібно визначити або за регіструвати, тут буде аргумен -колбек функція
         // з іменем builder по факту 9.15...функція виконається то інформація попаде в action
@@ -52,11 +82,18 @@ export const userSlice = createSlice({
             .addCase(loadUsers.rejected,(state,action)=>{
                     console.log(state);
                     console.log(action.payload);
-                }
-            )
+                })
+    //Якщо loadUser виконано вдало то
+            .addCase(loadUser.fulfilled,(state, action:PayloadAction<IUser>)=>{
+                state.user=action.payload;
+            })//кейси діють на певний метод і стан його виконання
+            .addMatcher(isFulfilled(loadUser,loadUsers),(state, )=>{
+              state.loadState=true;
+            })// діє на методи які ми зазначили
+            
 }); //це для асинхроних операцій і тут потрібно визначит функції
 
 //дорівнює новому об'єкту на основі userSlice
 export const userSliceActions={
-    ...userSlice.actions,loadUsers
+    ...userSlice.actions,loadUsers,loadUser
 };

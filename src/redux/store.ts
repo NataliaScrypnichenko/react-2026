@@ -1,5 +1,7 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {userSlice} from "./slices/usersSlise/userSlice.ts";
+import {postSlice} from "./slices/postSlice/postSlice.ts";
+
 
 
 
@@ -7,6 +9,6 @@ import {userSlice} from "./slices/usersSlise/userSlice.ts";
 export const store=configureStore({
     reducer:{
         userSlice:userSlice.reducer,//кімнати для компонента З функцією його reducer
-        // postSlice:postSlice.reducer//
+         postSlice:postSlice.reducer//
     }
 });
