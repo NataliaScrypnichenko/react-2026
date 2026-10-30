@@ -1,9 +1,7 @@
-//4. формуємо початковий стан для початкового стану initialState і її потрібно типізувати
-
-
 import {createAsyncThunk, createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import type {IUser} from "../../../models/IUser.ts";
 
+//4. формуємо початковий стан для початкового стану initialState і її потрібно типізувати
 type UserSliceType={
     users:IUser[],
 };
@@ -13,13 +11,21 @@ const initialState:UserSliceType = {users:[]};
 //створюємо loadUsers через createAsyncThunk і тут повернится х-ка fulfilled
  const loadUsers=createAsyncThunk(
     'usersSlice/loadUsers',
-    (_,thunkAPI)=>{
-      const users= fetch('https://jsonplaceholder.typicode.com/users')
-             .then(res => res.json())
+    async (_,thunkAPI)=>{
 
-        return users;
-    }
-    )
+      try{
+          const users= await fetch('https://jsonplaceholder.typicode.com/users')
+              .then(value => value.json());
+
+          return thunkAPI.fulfillWithValue(users);
+         // throw new Error();
+      }catch(e){
+
+          console.error(e);
+          return thunkAPI.rejectWithValue('some error occurred');
+      }
+
+      });
 
 
 //3. формуємо userSlice і визначаємо три характеристики
@@ -38,14 +44,17 @@ export const userSlice = createSlice({
     extraReducers:builder =>
         // 2.4= це для асинхроних операцій і тут потрібно визначити або за регіструвати, тут буде аргумен -колбек функція
         // з іменем builder по факту 9.15...функція виконається то інформація попаде в action
-        builder.addCase(loadUsers.fulfilled,(state, action:PayloadAction<IUser[]>) => {
+        builder
+            .addCase(loadUsers.fulfilled,(state, action:PayloadAction<IUser[]>) => {
             state.users=action.payload;
-        }),
-    //це для асинхроних операцій і тут потрібно визначит функції
-
-
-
-});
+        })
+    //коли оформили помилку то пишем новий кейс
+            .addCase(loadUsers.rejected,(state,action)=>{
+                    console.log(state);
+                    console.log(action.payload);
+                }
+            )
+}); //це для асинхроних операцій і тут потрібно визначит функції
 
 //дорівнює новому об'єкту на основі userSlice
 export const userSliceActions={

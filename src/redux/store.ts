@@ -1,5 +1,6 @@
 import {configureStore} from "@reduxjs/toolkit";
-import {userSlice} from "./slices/usersSlise/usersSlice.ts";
+import {userSlice} from "./slices/usersSlise/userSlice.ts";
+
 
 
 //2. пропса в {store} це є сховище приймає опції і створює сховище
