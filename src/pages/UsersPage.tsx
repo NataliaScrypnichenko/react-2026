@@ -1,9 +1,11 @@
 //після того як створили сховище то ідем на пейдж
 // розложити по сервісу компоненти
 
-import {useAppSelector, userSliceActions} from "../main.tsx";
-import {useDispatch} from "react-redux";
+
 import {useEffect} from "react";
+import {useAppDispatch} from "../redux/hooks/useAppDispatch.tsx";
+import {useAppSelector} from "../redux/hooks/useAppSelector.tsx";
+import {userSliceActions} from "../redux/slices/usersSlise/userSlice.ts";
 
 const UsersPage = () => {
 //7. відхоплюємо інформацію через Provider store={store} 17:00
@@ -11,21 +13,23 @@ const UsersPage = () => {
     // тут потрібно типізувати і це доведеться робити постійно тож створюємо хук яий сам буде діставати типізацію з сховища
     //  const stateType = useSelector(state =>state ); заміняемо на хук створений
 
-    const {users} = useAppSelector(({userSlice})=>userSlice);
+    const{users} = useAppSelector(({userSlice}) => userSlice);
+
    // console.log(userSlice)
 
     // наповнення масива через функцію loadUsers яка знаходиться в userSlice
     // useDispatch()=викликвє іншу функцію для того щоб вони виконалися
-    const dispatch=useDispatch();
+    // const dispatch=useDispatch();
+    //викликаємо useAppDispatch тут і він уже типізований
+    const dispatch=useAppDispatch();
 
+// 2.2= фетч відбувається на рівні компонента не є добре можуть бути проблеми тому що тут асинхрона
+// операція dispatch не в асинхронщині погано працює для нього зробили іншу бібдіотеку ..asyncThunk=перетворювач
+// асинхроних операцій тут фетч удаляєм запит нп АРІ
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(res => res.json())
-            .then(value => {
-                // dispatch(userSlice.actions.loadUsers(value));
-                dispatch(userSliceActions.loadUsers(value));
-            })
-    }, []);
+        dispatch(userSliceActions.loadUsers())
+
+    },[]);
 
 
     return (
