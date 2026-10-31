@@ -16,6 +16,7 @@ export const loadUsers = createAsyncThunk(
     async (_, thunkAPI) => {
         try{
             const users= await getAll<IUser[]>('/users')
+            
             return thunkAPI.fulfillWithValue(users);
         }catch(e){
             console.log(e);

@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import type {IPost} from "../../model/IPost.ts";
 import {getAll} from "../../services/api.services.ts";
-import {userSlice} from "./userSlice.ts";
+
 
 type PostSliceType={
     posts:IPost[]
@@ -38,5 +38,5 @@ export const postSlice = createSlice({
 });
 
 export const postSliceActions={
-    ...userSlice.actions,loadPosts
+    ...postSlice.actions,loadPosts
 };
