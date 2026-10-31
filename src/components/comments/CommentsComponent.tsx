@@ -13,7 +13,7 @@ const CommentsComponent = () => {
 
     useEffect(() => {
         dispatch(commentsSliceActions.loadComments())
-    });
+    },[]);
 
     return (
         <div>

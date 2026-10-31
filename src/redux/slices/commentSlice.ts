@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import type {IComment} from "../../model/IComment.ts";
 import {getAll} from "../../services/api.services.ts";
-import { userSlice} from "./userSlice.ts";
+
 
 type CommentSliceType = {
         comments: IComment[];
@@ -42,5 +42,5 @@ export const commentSlice = createSlice({
 });
 
 export const commentsSliceActions={
-        ...userSlice.actions,loadComments
+        ...commentSlice.actions,loadComments
 }

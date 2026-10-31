@@ -29,9 +29,22 @@ const ComplexComponent = () => {
 
     return (
         <div>
-            {users.map((user:IUser)=>(<div key={user.id}>{user.name}</div>))}
-            {posts.map((post:IPost)=>(<div key={post.id}>{post.title}</div>))}
-            {comments.map((comment:IComment)=>(<div key={comment.id}>{comment.name}</div>))}
+            {users.map((user:IUser)=>(<div key={user.id}>{user.name}
+                <h2>User: {user.name}</h2>
+                <p>{user.email}</p>
+                {posts.filter((post:IPost)=>post.userId === user.id).map((post:IPost)=>
+                    (<div key={post.id}>
+                        <h3>Post: {post.title}</h3>
+                        <p>{post.body}</p>
+                        {comments.filter((comment:IComment)=>comment.postId === post.id)
+                            .map((comment:IComment)=>(<div key={comment.id}>
+                                <h4>comment: {comment.name}</h4>
+                                <p>email:{comment.email}</p>
+                                <p>body:{comment.body}</p>
+                            </div>))}
+                    </div>))}
+            </div>))}
+
         </div>
     );
 };

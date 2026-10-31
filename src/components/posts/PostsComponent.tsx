@@ -1,27 +1,27 @@
-import {useAppSelector} from "../../redux/hooks/useAppSelector.tsx";
-import { postSliceActions} from "../../redux/slices/postSlice.ts";
-import {useAppDispatch} from "../../redux/hooks/useAppDispatch.tsx";
-import {useEffect} from "react";
-import PostComponents from "./PostComponents.tsx";
+    import {useAppSelector} from "../../redux/hooks/useAppSelector.tsx";
+    import { postSliceActions} from "../../redux/slices/postSlice.ts";
+    import {useAppDispatch} from "../../redux/hooks/useAppDispatch.tsx";
+    import {useEffect} from "react";
+    import PostComponents from "./PostComponents.tsx";
 
 
-const PostsComponent = () => {
+    const PostsComponent = () => {
 
-    const posts = useAppSelector(state => state.postStoreSlice.posts);
+        const posts = useAppSelector(state => state.postStoreSlice.posts);
 
-    const dispatch = useAppDispatch();
+        const dispatch = useAppDispatch();
 
-    useEffect(() => {
-        dispatch(postSliceActions.loadPosts())
-    }, []);
+        useEffect(() => {
+            dispatch(postSliceActions.loadPosts())
+        }, []);
 
-    return (
-        <div>
-            {
-                posts.map(post=><PostComponents key = {post.id} post={post}/>)
-            }
-        </div>
-    );
-};
+        return (
+            <div>
+                {
+                    posts.map(post=><PostComponents key = {post.id} post={post}/>)
+                }
+            </div>
+        );
+    };
 
-export default PostsComponent;
+    export default PostsComponent;

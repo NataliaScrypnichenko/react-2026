@@ -5,7 +5,6 @@ const UsersPage = () => {
 
     return (
         <div>
-            Users Page
             <hr/>
             <UsersComponent/>
         </div>
