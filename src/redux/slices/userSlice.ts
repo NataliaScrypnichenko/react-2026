@@ -10,22 +10,23 @@ type UserSliceType = {
 //Створюю початковий стан initUserState.
 const initUserState:UserSliceType={users:[]};//масив порожній, оскільки користувачі ще не завантажені з API.
 
-
-//Створюю асинхронну дію loadUsers за допомогою createAsyncThunk.
+//Створюю асинхронну дію loadUsers за допомогою createAsyncThunk.-яка виконує запити до сервера,формує стани pending, fulfilled, rejected та повертає отримані дані або помилку
 export const loadUsers = createAsyncThunk(
-    //назва дії,
-    'userSlice/loadUsers',
+    'userSlice/loadUsers',    //назва дії,
 
-    //асинхронна функція. Перший параметр _ означає, що додаткові аргументи для запиту не передаються. thunkAPI надає інструменти для керування результатом асинхронної дії.
+    //створюю асинхронну функцію. Перший параметр _ означає, що додаткові аргументи для запиту не передаються.
+    // thunkAPI надає інструменти для керування результатом асинхронної дії.
     async (_, thunkAPI) => {
         // try — намагаюся отримати користувачів із сервера.
         try{
+            // Викликаю API-сервіс і отримую масив users
             const users= await getAll<IUser[]>('/users');
             // повертаю успішно отримані дані зі статусом fulfilled.
             return thunkAPI.fulfillWithValue(users);
         }
         catch(e)//перехоплюю помилку, якщо під час виконання запиту виникла проблема.
         {
+            // вивожу помилку в консоль
             console.log(e);
             // повертаю власне повідомлення про помилку формує дію зі статусом rejected.
             return thunkAPI.rejectWithValue('some error ');
@@ -38,13 +39,13 @@ export const loadUsers = createAsyncThunk(
 export const userSlice = createSlice({
     name: "userSlice",//назва об'єкта
     initialState: initUserState,// початковий стан
-    reducers: {},// зміна стану і дії які відбуваються
+    reducers: {},//  для звичайних синхронних дій
     //Обробляю результати асинхронної дії loadUsers і записує в store
     extraReducers: builder =>{
         builder
-            // Якщо запит успішний, записую користувачів у Store.
+            // Обробляю кейс, коли запит успішно завершився у Store.
             .addCase(loadUsers.fulfilled,(state, action:PayloadAction<IUser[]>) => {
-                state.users=action.payload;
+                state.users=action.payload;/// Записую отримані юзери в store
             })
            // Якщо запит завершився помилкою, виводжу її в консоль.
             .addCase(loadUsers.rejected,(state,action)=>{

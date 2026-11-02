@@ -6,17 +6,16 @@ import UserComponent from "./UserComponent.tsx";
 
 //UsersComponent відповідає за отримання та відображення списку користувачів
 const UsersComponent = () => {
-    // Отримуємо масив користувачів із store
+    // За допомогою useAppSelector отримую масив користувачів із store
     const users = useAppSelector(state => state.usersStoreSlice.users);
 
-    // Отримуємо функцію dispatch для відправлення дій у Redux Store
+    // За допомогою useAppDispatch отримую функцію dispatch=яка дозволяє запускати дії Redux
     const dispatch = useAppDispatch();
 
     // useEffect виконує код після першого відображення компонента
     useEffect(() => {
-
-        // Викликаємо асинхронну дію loadUsers,
-        // яка отримує список користувачів із сервера
+        // Відправляю асинхронну дію loadUsers,яка запускає запит до сервера для отримання списку постів.
+        // після успішного запиту дані записуються в store
         dispatch(userSliceActions.loadUsers());
 
     }, []);
@@ -24,8 +23,8 @@ const UsersComponent = () => {
     return (
         <div>
             {
-                // Перебираємо масив користувачів методом map
-                // Для кожного користувача створюємо компонент UserComponent
+                // Перебираю масив користувачів методом map
+                // то для кожного користувача створюю компонент UserComponent
                 users.map((user) => (
                     <UserComponent user={user} key={user.id} />
                 ))

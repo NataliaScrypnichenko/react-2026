@@ -1,12 +1,12 @@
 import type {FC} from "react";
 import type {IUser} from "../../model/IUser.ts";
 
-// Створюю тип властивостей (props) компонента
+// Створюю тип UserTypeProps, який описує властивості (props), що отримує компонент
 type UserTypeProps={
-    user:IUser
+    user:IUser// user — об'єкт поста типу IPost
 };
-// Створюємо функціональний компонент UserComponent
-// FC<UserTypeProps> вказує, що компонент отримує props типу UserTypeProps
+
+// Створюємо UserComponent для виведення даних
 const UserComponent:FC<UserTypeProps> = ({user}) => {
     return (
         <div>
