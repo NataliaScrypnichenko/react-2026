@@ -1,5 +1,6 @@
 import type {FC} from "react";
 import type {IPost} from "../../model/IPost.ts";
+import "./PostComponent.css"
 
 // Створюю тип PostsPropsType, який описує властивості (props), що отримує компонент
 type PostsPropsType = {
@@ -10,8 +11,8 @@ type PostsPropsType = {
 const PostComponent:FC<PostsPropsType> = ({post}) => {
     return (
         <div>
-            <div>
-               <p>userId: {post.userId}</p>
+            <div className="post-card">
+                <p>userId: {post.userId}</p>
                 <p>title: {post.title}</p>
                 <p>body: {post.body}</p>
             </div>

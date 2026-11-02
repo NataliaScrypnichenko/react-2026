@@ -1,5 +1,6 @@
 import type {FC} from "react";
 import type {IComment} from "../../model/IComment.ts";
+import "./CommentComponent.css"
 
 // Створюю тип CommentsPropsType, який описує властивості (props), що отримує компонент
 type CommentsPropsType={
@@ -10,7 +11,7 @@ type CommentsPropsType={
 const CommentComponent:FC<CommentsPropsType> = ({comment}) => {
     return (
         <div>
-            <div>
+            <div className="comment-card ">
                 <p>{comment.postId}</p>
                 <p>{comment.name}/{comment.email}</p>
                 <p>{comment.body}</p>

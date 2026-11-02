@@ -4,3 +4,4 @@ export interface IPost {
 	title: string;
 	body: string;
 }
+// Створюю інтерфейс IPost, який описує структуру одного поста

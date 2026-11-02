@@ -9,10 +9,8 @@ type UserTypeProps={
 // Створюємо UserComponent для виведення даних
 const UserComponent:FC<UserTypeProps> = ({user}) => {
     return (
-        <div>
-            {
-                <div>{user.id} : {user.name} {user.username}</div>
-            }
+        <div className="user-card">
+            {user.id} : {user.name} {user.username}
         </div>
     );
 };

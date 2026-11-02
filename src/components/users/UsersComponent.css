@@ -1,0 +1,6 @@
+/* Загальний контейнер */
+.users-container {
+    padding: 20px;
+    background-color: white;
+    color: black;
+}

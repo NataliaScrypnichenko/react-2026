@@ -1,5 +1,6 @@
 import {Link} from "react-router";
 
+//створюю навігаційне меню для переходу між сторінками застосунку за допомогою React Router.
 const Menu = () => {
     return (
         <div>

@@ -3,6 +3,7 @@ import {useAppDispatch} from "../../redux/hook/useAppDispatch.tsx";
 import {useEffect} from "react";
 import {userSliceActions} from "../../redux/slices/userSlice.ts";
 import UserComponent from "./UserComponent.tsx";
+import './UsersComponent.css'
 
 //UsersComponent відповідає за отримання та відображення списку користувачів
 const UsersComponent = () => {
@@ -21,7 +22,7 @@ const UsersComponent = () => {
     }, []);
 
     return (
-        <div>
+        <div className="users-container">
             {
                 // Перебираю масив користувачів методом map
                 // то для кожного користувача створюю компонент UserComponent

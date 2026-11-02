@@ -1,0 +1,6 @@
+/* Загальний контейнер сторінки */
+.posts-container {
+    padding: 20px;
+    background-color: white;
+    color: black;
+}

@@ -3,6 +3,7 @@ import {useAppDispatch} from "../../redux/hook/useAppDispatch.tsx";
 import {useEffect} from "react";
 import {commentSliceActions} from "../../redux/slices/commentSlice.ts";
 import CommentComponent from "./CommentComponent.tsx";
+import "./CommentsComponent.css"
 
 //CommentsComponent відповідає за отримання та відображення списку користувачів
 const CommentsComponent = () => {
@@ -22,11 +23,14 @@ const CommentsComponent = () => {
   },[]);
 
     return (
-        <div>
+        <>
             {/*/ Перебираю масив коментрів методом map
                  то для кожного коментаря створюю компонент CommentComponent*/}
+            <div className="comments-container">
+
             {comments.map((comment) => (<CommentComponent key={comment.id} comment={comment} />))}
-        </div>
+            </div>
+        </>
     );
 };
 

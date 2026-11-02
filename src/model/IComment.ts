@@ -5,3 +5,4 @@ export interface IComment {
     email: string;
     body: string;
 }
+// Створюю інтерфейс IComment, який описує структуру одного коментаря

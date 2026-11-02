@@ -3,6 +3,7 @@ import {useEffect} from "react";
 import {useAppDispatch} from "../../redux/hook/useAppDispatch.tsx";
 import {postSliceActions} from "../../redux/slices/postSlice.ts";
 import PostComponent from "./PostComponent.tsx";
+import "./PostsComponent.css"
 
 // створюю PostsComponent який відповідає за отримання та відображення списку постів.
 const PostsComponent = () => {
@@ -21,7 +22,7 @@ const PostsComponent = () => {
     },[]);
 
     return (
-        <div>
+        <div className="posts-container">
             {/* Перебираю масив користувачів методом map то для кожного поста створюю компонент PostComponent.*/}
 
             {posts.map((post) => <PostComponent post={post} key={post.id} />)}
