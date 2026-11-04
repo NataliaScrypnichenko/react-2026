@@ -1,23 +1,44 @@
+// Імпортую тип FC з React для типізації функціонального компонента.
 import type {FC} from "react";
+
+// Імпортую інтерфейс IPost, який описує структуру одного поста.
 import type {IPost} from "../../model/IPost.ts";
+
+// Підключаю CSS-файл для оформлення компонента.
 import "./PostComponent.css"
 
-// Створюю тип PostsPropsType, який описує властивості (props), що отримує компонент
+// Створюю тип PostsPropsType, який описує властивості (props),
+// що компонент отримує від батьківського компонента.
 type PostsPropsType = {
-    post: IPost;// post — об'єкт поста типу IPost
+    // post — об'єкт одного поста, структура якого описана інтерфейсом IPost.
+    post: IPost;
 };
 
-//створюю PostComponent для виведення даних
-const PostComponent:FC<PostsPropsType> = ({post}) => {
+// Створюю функціональний компонент PostComponent де є
+// FC — тип React для функціонального компонента.
+// PostsPropsType — тип, який описує властивості, що компонент повинен отримати.
+// FC<PostsPropsType> Разом вони повідомляють TypeScript, що компонент приймає post із типом IPost.
+// За допомогою деструктуризації ({post}) Компонент отримує об'єкт props, а з нього дістає властивість post
+const PostComponent: FC<PostsPropsType> = ({post}) => {
+    // Повертаю розмітку, яка відображає інформацію про один пост.
     return (
         <div>
+            {/* Контейнер одного поста з CSS-класом для оформлення. */}
             <div className="post-card">
+
+                {/* Виводжу ID користувача, якому належить цей пост. */}
                 <p>userId: {post.userId}</p>
+
+                {/* Виводжу заголовок поста. */}
                 <p>title: {post.title}</p>
+
+                {/* Виводжу текст поста. */}
                 <p>body: {post.body}</p>
+
             </div>
         </div>
     );
 };
 
+// Експортую компонент, щоб його можна було імпортувати та використовувати в інших файлах.
 export default PostComponent;
