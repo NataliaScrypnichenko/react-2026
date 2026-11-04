@@ -1,10 +1,17 @@
+// Імпортую createAsyncThunk для створення асинхронних дій,
+// createSlice для створення Redux Slice,
+// PayloadAction для типізації даних, які передаються в action.payload.
 import {createAsyncThunk, createSlice, type PayloadAction} from "@reduxjs/toolkit";
+
+// Імпортую інтерфейс IUser, який описує структуру одного користувача
 import type {IUser} from "../../model/IUser.ts";
+
+// Імпортую функцію getAll, яка виконує GET-запити до сервера.
 import {getAll} from "../../services/api.services.ts";
 
 // Створюю тип UserSliceType, який описує структуру стану userSlice
 type UserSliceType = {
-    users:IUser[],
+    users:IUser[], //Масив користувачів, кожен елемент якого відповідає інтерфейсу IUser
 };
 
 //Створюю початковий стан initUserState.
